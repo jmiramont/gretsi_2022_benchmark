@@ -63,6 +63,6 @@ if __name__ == "__main__":
         # ax.plot([tmin, tmax],[fmin*N, fmin*N],'w')
         # ax.plot([tmin, tmax],[fmax*N, fmax*N],'w')
 
-    # plt.show()
-    fig.set_size_inches((3.5,1))
-    plt.savefig('results/figure_signals_example.pdf',bbox_inches='tight')
+    plt.show()
+    # fig.set_size_inches((3.5,1))
+    # plt.savefig('results/figure_signals_example.pdf',bbox_inches='tight')

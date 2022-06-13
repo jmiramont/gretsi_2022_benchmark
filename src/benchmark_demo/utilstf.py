@@ -100,11 +100,13 @@ def reconstruct_signal(hull_d, stft):
     return mask, xr, t 
 
 
-def reconstruct_signal_2(mask, stft, Npad):
+def reconstruct_signal_2(mask, stft, Npad, Nfft=None):
     """ Reconstruction using a mask given as parameter
     """
     Ni = mask.shape[1]
-    Nfft = 2*Ni
+    if Nfft is None:
+        Nfft = Ni
+
     # reconstruction
     g = sg.gaussian(Nfft, np.sqrt((Nfft)/2/np.pi))
     g = g/g.sum()
@@ -144,8 +146,8 @@ def add_snr_block(x,snr,K = 1):
     Px = np.sum(x ** 2)
     # print(x)
 
-    n = np.random.rand(N,K)
-    n = n - np.mean(n,axis = 0)
+    n = np.random.randn(N,K)
+    # n = n - np.mean(n,axis = 0)
     # print(np.mean(n, axis = 0))
     # x = x+n
 
@@ -169,8 +171,8 @@ def add_snr(x,snr,K = 1):
     x = x - np.mean(x)
     Px = np.sum(x ** 2)
 
-    n = np.random.rand(N)
-    n = n-np.mean(n)
+    n = np.random.randn(N)
+    # n = n-np.mean(n)
     
     Pn = np.sum(n ** 2)
     n = n / np.sqrt(Pn)

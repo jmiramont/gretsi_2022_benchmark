@@ -550,7 +550,7 @@ class SignalBank:
         for i in range(stft.shape[1]):
             stft[:,i] *= sg.windows.tukey(stft.shape[0],0.95)
 
-        xr, t = reconstruct_signal_2(np.ones(stft.shape), stft_padded, Npad)
+        xr, t = reconstruct_signal_2(np.ones_like(stft), stft_padded, Npad)
         return xr
 
     def signal_mc_impulses(self, Nimpulses = 7):
